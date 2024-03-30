@@ -1,7 +1,11 @@
+using Checkout.Interfaces;
+using Checkout.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<ICheckoutProcess, CheckoutProcess>();
 
 var app = builder.Build();
 
