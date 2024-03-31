@@ -1,19 +1,14 @@
 using Checkout.Interfaces;
-using Checkout.Models;
-using CheckoutTest.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
 namespace Checkout.Controllers
 {
     public class HomeController : Controller
-    {
-        private readonly ILogger<HomeController> _logger;
+    {      
         private readonly ICheckoutProcess _checkoutProcess;
 
-        public HomeController(ILogger<HomeController> logger, ICheckoutProcess checkoutProcess)
-        {
-            _logger = logger;
+        public HomeController(ICheckoutProcess checkoutProcess)
+        {           
             _checkoutProcess = checkoutProcess;
         }
 
@@ -24,7 +19,9 @@ namespace Checkout.Controllers
 
         public IActionResult GetCost()
         {
-            _checkoutProcess.Reset();
+            // Reset item list
+            _checkoutProcess.ResetScannedItems();
+
             // Scan items
             _checkoutProcess.Scan("A");
             _checkoutProcess.Scan("A");
@@ -37,17 +34,6 @@ namespace Checkout.Controllers
             // Calculate total price
             int totalPrice = _checkoutProcess.GetTotalPrice();
             return View("Index", totalPrice);
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        }             
     }
 }

@@ -4,6 +4,6 @@
     {
         void Scan(string service);
         int GetTotalPrice();
-        void Reset();
+        void ResetScannedItems();
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Checkout.Interfaces;
+using Checkout.Models;
 
-namespace Checkout.Models
+namespace CheckoutTest.Services
 {
     public class CheckoutProcess : ICheckoutProcess
     {
@@ -21,7 +22,10 @@ namespace Checkout.Models
         /// </summary>
         private List<string> scannedItems = new List<string>();
 
-        public void Reset()
+        /// <summary>
+        /// Reset the scanned item list
+        /// </summary>
+        public void ResetScannedItems()
         {
             scannedItems.Clear();
         }
