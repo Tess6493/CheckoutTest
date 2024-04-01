@@ -14,11 +14,6 @@ namespace Checkout.Controllers
 
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult GetCost()
-        {
             // Reset item list
             _checkoutProcess.ResetScannedItems();
 
@@ -33,7 +28,8 @@ namespace Checkout.Controllers
 
             // Calculate total price
             int totalPrice = _checkoutProcess.GetTotalPrice();
-            return View("Index", totalPrice);
-        }             
+
+            return View("Index", totalPrice);            
+        }   
     }
 }

@@ -1,5 +1,5 @@
 using Checkout.Interfaces;
-using CheckoutTest.Services;
+using CheckoutTest.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CheckoutTest.Repository\CheckoutTest.Repository.csproj" />
+    <ProjectReference Include="..\CheckoutTest.Service\CheckoutTest.Service.csproj" />
+  </ItemGroup>
+
 </Project>
